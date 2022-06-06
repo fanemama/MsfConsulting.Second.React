@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom';
 import Header from './components/common/Header';
 import PageNotFound from './PageNotFound';
 import CoursesPage from './components/courses/CoursesPage';
+import { Course } from './types/course';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <Routes>
         <Route  path="/" element={<HomePage/>} />
         <Route path="/about" element={<AboutPage/>} />
-        <Route path="/courses" element={<CoursesPage/>} />
+        <Route path="/courses" element={<CoursesPage courses={[] as  Course[]}  />} />
         <Route path="*" element={<PageNotFound/>} /> 
         </Routes>
     </div>

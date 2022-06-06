@@ -5,15 +5,23 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter  } from "react-router-dom";
+import configureStore from "./redux/configureStore";
+import { Provider as ReduxProvider } from "react-redux";
+import { Course } from './types/course';
+const initialState = { courses:[] as  Course[]};
+const store = configureStore(initialState);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
+    <ReduxProvider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
+    </ReduxProvider>
   </React.StrictMode>
 );
 
