@@ -7,9 +7,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter  } from "react-router-dom";
 import configureStore from "./redux/configureStore";
 import { Provider as ReduxProvider } from "react-redux";
-import { Course } from './types/course';
-const initialState = { courses:[] as  Course[]};
-const store = configureStore(initialState);
+import { INITIAL_STATE } from './redux/initialState';
+
+const store = configureStore(INITIAL_STATE);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

@@ -1,7 +1,6 @@
-import { AppState } from './store';
+import { AppState } from './appState';
 import { createStore, compose, applyMiddleware, Store } from "redux";
 import rootReducer from "./reducers";
-//import reduxImmutableStateInvariant from "redux-immutable-state-invariant";
 
 export default function configureStore(initialState:any):Store<AppState> {
   const composeEnhancers =

@@ -1,3 +1,3 @@
-export enum CourseActionType{
-    CREATE_COURSE = "CREATE_COURSE"
-}
+export const CourseActionType = {
+    CREATE_COURSE: "CREATE_COURSE"
+};

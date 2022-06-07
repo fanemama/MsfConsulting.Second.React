@@ -1,12 +1,22 @@
 import React from "react";
-import { Course } from "../../types/course";
+import { Course } from "./types/course";
+import { connect } from "react-redux";
+import { AppState } from "../../redux/appState";
+import { bindActionCreators, Dispatch } from "redux";
+import {createCourse} from "../../redux/actions/courseAction"
+
 
 interface Props {
   courses: Course[];
+  actions:{
+     createCourse: typeof createCourse
+  }
 }
+
 interface State {
   course: Course;
 }
+
 class CoursesPage extends React.Component<Props, State> {
 
   state: State = {
@@ -22,7 +32,7 @@ class CoursesPage extends React.Component<Props, State> {
 
   handleSubmit = (event: any) => {
     event.preventDefault();
-    this.props.courses.push(this.state.course);
+    this.props.actions.createCourse(this.state.course);
     // this.props.actions.createCourse(this.state.course);
   };
 
@@ -38,13 +48,24 @@ class CoursesPage extends React.Component<Props, State> {
         />
 
         <input type="submit" value="Save" />
-        {this.props ? this.props.courses.map(course => (
+        {this.props.courses.map(course => (
           <div key={course.title}>{course.title}</div>
-        )) : ""
-      }
+        ))}
       </form>
     );
   }
 }
 
-export default CoursesPage;
+function mapStateToProps(state: AppState) {
+  return {
+    courses: state.courses
+  };
+}
+
+function mapDispatchToProps(dispatch: Dispatch) {
+  return {
+    actions: bindActionCreators({createCourse}, dispatch)
+  };
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CoursesPage);

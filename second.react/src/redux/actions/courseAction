@@ -1,7 +1,0 @@
-import { ThunkAction } from 'redux-thunk';
-import { Course } from './../../types/course';
-import {CourseActionType} from "./actionTypes";
-
-export const createCourse = (course: Course) => {
-  return { type: CourseActionType.CREATE_COURSE, course };
-}
