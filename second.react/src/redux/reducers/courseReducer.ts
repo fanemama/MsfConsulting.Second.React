@@ -3,17 +3,16 @@ import {CourseActionType} from "../actions/actionTypes";
 import { IAction } from "../actions/IAction";
 import { AppState } from "../appState";
 
-const AddCourse = (state: AppState, payload: Course): AppState  => {
-  if(!payload)  return state;
-  return {...state, courses:[ ...state.courses ,payload]};
+const AddCourse = (state: Course[], payload: Course): Course[]  => {
+  return [ ...state ,payload];
 }
 
 const handlers = {
 	[CourseActionType.CREATE_COURSE]: AddCourse,
 };
 
-
-const courseReducer = (state: AppState = { courses:[] as  Course[]}, action: IAction<any>): AppState=> {
+const INITIAL_STATE =  [] as Course[];
+const courseReducer = (state: Course[] =INITIAL_STATE, action: IAction<any>): Course[] => {
   return handlers[action.type]
 		? handlers[action.type](state, action.payload)
 		: state;

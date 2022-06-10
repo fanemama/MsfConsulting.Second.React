@@ -5,11 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter  } from "react-router-dom";
-import configureStore from "./redux/configureStore";
+import createStore from "./redux/configureStore";
 import { Provider as ReduxProvider } from "react-redux";
 import { INITIAL_STATE } from './redux/initialState';
 
-const store = configureStore(INITIAL_STATE);
+const store = createStore();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
